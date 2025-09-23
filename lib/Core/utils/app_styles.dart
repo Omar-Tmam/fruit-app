@@ -39,11 +39,6 @@ double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
 }
 
 double getScaleFactor(BuildContext context) {
-  // better for mobile and no context;
-  // var dispatcher = PlatformDispatcher.instance;
-  // var physicalWidth = dispatcher.views.first.physicalSize.width;
-  // var devicePixelRatio = dispatcher.views.first.devicePixelRatio;
-  // var width = physicalWidth / devicePixelRatio;
   double width = MediaQuery.sizeOf(context).width;
   if (width < SizeConfig.tabletBreakPoint) {
     return width / 450;
