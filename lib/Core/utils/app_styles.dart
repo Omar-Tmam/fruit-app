@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:fruit_app/Core/utils/size_config.dart';
+
+abstract class AppStyles {
+  static TextStyle secondaryText(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      color: Theme.of(context).textTheme.bodyMedium?.color,
+      fontFamily: 'Inter',
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle productPriceText(BuildContext context) {
+    return TextStyle(
+      color: Theme.of(context).textTheme.bodyLarge?.color,
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'Inter',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle interSemiBold(BuildContext context) {
+    return TextStyle(
+      color: const Color(0xFF5A5555),
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontFamily: 'Inter',
+      fontWeight: FontWeight.w600,
+    );
+  }
+}
+
+double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
+  double scaleFactor = getScaleFactor(context);
+  double responsiveSize = fontSize * scaleFactor;
+  double lowerLimit = fontSize * 0.8;
+  double upperLimit = fontSize * 1.2;
+  return responsiveSize.clamp(lowerLimit, upperLimit);
+}
+
+double getScaleFactor(BuildContext context) {
+  // better for mobile and no context;
+  // var dispatcher = PlatformDispatcher.instance;
+  // var physicalWidth = dispatcher.views.first.physicalSize.width;
+  // var devicePixelRatio = dispatcher.views.first.devicePixelRatio;
+  // var width = physicalWidth / devicePixelRatio;
+  double width = MediaQuery.sizeOf(context).width;
+  if (width < SizeConfig.tabletBreakPoint) {
+    return width / 450;
+  } else {
+    return width / 950;
+  }
+}
