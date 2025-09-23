@@ -25,7 +25,14 @@ class HomeView extends StatelessWidget {
                 fontSize: getResponsiveFontSize(context, fontSize: 22),
               ),
             ),
-            Expanded(child: SizedBox()),
+            SizedBox(
+              width: 10,
+            ),
+            Icon(
+              Icons.keyboard_arrow_down_outlined,
+              size: 34,
+            ),
+            Spacer(),
             SvgPicture.asset(
               'assets/pasket_icon.svg',
               width: 28,
