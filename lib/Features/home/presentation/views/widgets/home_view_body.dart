@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_app/Core/constants.dart';
-import 'package:fruit_app/Core/utils/app_styles.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/category_list.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/custom_offers_slider.dart';
+import 'package:fruit_app/Features/home/presentation/views/widgets/fruits_section.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/product_list.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -26,26 +25,7 @@ class HomeViewBody extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Row(
-            children: [
-              Text(
-                'Fruits',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.inter().fontFamily,
-                    fontSize: getResponsiveFontSize(context, fontSize: 20)),
-              ),
-              Spacer(),
-              Text(
-                'See all',
-                style: TextStyle(
-                    color: Constants.primary,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.inter().fontFamily,
-                    fontSize: getResponsiveFontSize(context, fontSize: 20)),
-              )
-            ],
-          ),
+          FruitsSection(),
           SingleChildScrollView(
               scrollDirection: Axis.horizontal, child: ProductList())
         ],
@@ -53,6 +33,4 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
-
-
 

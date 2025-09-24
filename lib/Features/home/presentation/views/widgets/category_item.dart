@@ -18,10 +18,9 @@ class CategoryItem extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             child: Image.asset(
-              image,
               width: 40,
               height: 40,
-              fit: BoxFit.contain,
+              image,
             ),
           ),
           const SizedBox(height: 8),
