@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/category_list.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/custom_offers_slider.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/fruits_section.dart';
+import 'package:fruit_app/Features/home/presentation/views/widgets/popup_cart.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/product_list.dart';
-
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -12,25 +12,34 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
+      child: Stack(
         children: [
-          CustomOffersSlider(),
-          SizedBox(
-            height: 10,
+          Column(
+            children: [
+              CustomOffersSlider(),
+              SizedBox(
+                height: 10,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: CategoryList(),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              FruitsSection(),
+              SingleChildScrollView(
+                  scrollDirection: Axis.horizontal, child: ProductList())
+            ],
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: CategoryList(),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          FruitsSection(),
-          SingleChildScrollView(
-              scrollDirection: Axis.horizontal, child: ProductList())
+          Positioned(
+            bottom: 100,
+            child: CustomPopupCart(),
+          )
         ],
       ),
     );
   }
 }
+
 
