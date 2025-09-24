@@ -3,6 +3,7 @@ import 'package:fruit_app/Core/constants.dart';
 import 'package:fruit_app/Core/utils/app_styles.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/category_list.dart';
 import 'package:fruit_app/Features/home/presentation/views/widgets/custom_offers_slider.dart';
+import 'package:fruit_app/Features/home/presentation/views/widgets/product_list.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           CustomOffersSlider(),
@@ -44,9 +45,14 @@ class HomeViewBody extends StatelessWidget {
                     fontSize: getResponsiveFontSize(context, fontSize: 20)),
               )
             ],
-          )
+          ),
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal, child: ProductList())
         ],
       ),
     );
   }
 }
+
+
+
