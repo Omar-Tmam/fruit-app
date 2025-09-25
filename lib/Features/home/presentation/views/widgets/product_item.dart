@@ -9,26 +9,40 @@ class ProductItem extends StatelessWidget {
       required this.product,
       required this.rate,
       required this.rateCount,
-      required this.price});
+      required this.price,
+      required this.onTap});
   final String image, product, rate, rateCount, price;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Card(
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.grey.shade100),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Image.asset(
-                image,
-                width: 120,
-                height: 120,
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20), color: Colors.grey.shade100),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Image.asset(
+                    image,
+                    width: 120,
+                    height: 120,
+                  ),
+                ),
               ),
-            ),
+              Positioned(
+                bottom: 7,
+                right: 7,
+                child: GestureDetector(
+                  onTap: onTap,
+                  child: CircleAvatar(
+                      radius: 16, backgroundColor: Colors.white, child: Icon(Icons.add)),
+                ),
+              )
+            ],
           ),
         ),
         Column(
